@@ -38,7 +38,7 @@ def launch_setup(context, *args, **kwargs):
 
     robot_namespace = "adap2e"
 
-    demo = "tirrex_adap2e"
+    demo = "hackathon_fira_demo"
     demo_timestamp = get_demo_timestamp()
 
     mode = LaunchConfiguration("mode").perform(context)
@@ -60,8 +60,7 @@ def launch_setup(context, *args, **kwargs):
     actions.append(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-                get_package_share_directory("tirrex_demo")
-                + "/launch/demo.launch.py"
+                get_package_share_directory("tirrex_demo") + "/launch/demo.launch.py"
             ),
             launch_arguments={
                 "demo": demo,
@@ -79,8 +78,8 @@ def launch_setup(context, *args, **kwargs):
         save_replay_configuration(
             demo,
             demo_timestamp,
-            "adap2e.launch.py",
-            {"mode": "replay_"+mode},
+            "demo.launch.py",
+            {"mode": "replay_" + mode},
         )
 
     return [GroupAction(actions)]
