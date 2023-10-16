@@ -1,0 +1,16 @@
+name: "imu"
+driver:
+  pkg: "xsens_driver"
+  #  pkg: "bluespace_ai_xsens_mti_driver"
+  device: "/dev/ttyUSB0"
+  baudrate: 115200
+configuration:
+  type: xsens
+  model: mti
+  rate: 100
+geometry:
+  parent_link: "base_link"
+  xyz: [0.0, 0.0, 1.0]
+  rpy: [0.0, 0.0, 0.0]
+records:
+  data: true

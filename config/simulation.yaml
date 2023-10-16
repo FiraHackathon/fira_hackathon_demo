@@ -1,0 +1,3 @@
+world_package: gazebo
+# world_name: montoldre.world
+world_name: montoldre_vineyard_crops.world
