@@ -10,7 +10,7 @@ configuration:
   rate: 100
 geometry:
   parent_link: "base_link"
-  xyz: [0.0, 0.0, 1.0]
+  xyz: [-0.1, 0.0, 0.42]
   rpy: [0.0, 0.0, 0.0]
 records:
   data: true

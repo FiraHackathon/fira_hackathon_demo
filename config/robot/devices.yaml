@@ -1,6 +1,9 @@
 remote_controller:
   type: joystick
-  available_mode: all
+  available_mode: simulation
+embedded_controller:
+  type: joystick
+  available_mode: live
 lms151:
   type: lidar
   available_mode: all
@@ -10,6 +13,3 @@ ublox:
 xsens:
   type: imu
   available_mode: all
-ur10:
-  type: arm
-  available_mode: none

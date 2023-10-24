@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from tirrex_demo import (
+    get_log_directory,
+    get_debug_directory,
+    get_demo_timestamp,
+    get_demo_config_directory,
+    save_replay_configuration,
+)
 from launch import LaunchDescription
 
 from launch.actions import (
@@ -19,26 +26,19 @@ from launch.actions import (
     DeclareLaunchArgument,
     OpaqueFunction,
     GroupAction,
-    SetEnvironmentVariable
+    SetEnvironmentVariable,
 )
 
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 
-from tirrex_demo import (
-    get_log_directory,
-    get_debug_directory,
-    get_demo_timestamp,
-    save_replay_configuration,
-)
-
 
 def launch_setup(context, *args, **kwargs):
 
-    robot_namespace = "adap2e"
+    robot_namespace = "alpo"
 
-    demo = "hackathon_fira_demo"
+    demo = "fira_hackathon_demo"
     demo_timestamp = get_demo_timestamp()
 
     mode = LaunchConfiguration("mode").perform(context)
@@ -60,7 +60,8 @@ def launch_setup(context, *args, **kwargs):
     actions.append(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-                get_package_share_directory("tirrex_demo") + "/launch/demo.launch.py"
+                get_package_share_directory("tirrex_demo")
+                + "/launch/demo.launch.py"
             ),
             launch_arguments={
                 "demo": demo,
@@ -79,7 +80,7 @@ def launch_setup(context, *args, **kwargs):
             demo,
             demo_timestamp,
             "demo.launch.py",
-            {"mode": "replay_" + mode},
+            {"mode": "replay_"+mode},
         )
 
     return [GroupAction(actions)]
@@ -91,14 +92,14 @@ def generate_launch_description():
 
     declared_arguments.append(DeclareLaunchArgument("mode", default_value="simulation"))
 
-    declared_arguments.append(DeclareLaunchArgument("record", default_value="false"))
-
     declared_arguments.append(
         DeclareLaunchArgument(
             "demo_config_directory",
-            default_value=get_package_share_directory("tirrex_adap2e") + "/config",
+            default_value=get_package_share_directory("hackathon_fira_demo") + "/config",
         )
     )
+
+    declared_arguments.append(DeclareLaunchArgument("record", default_value="false"))
 
     return LaunchDescription(
         declared_arguments + [OpaqueFunction(function=launch_setup)]
