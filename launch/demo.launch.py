@@ -95,7 +95,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "demo_config_directory",
-            default_value=get_package_share_directory("hackathon_fira_demo") + "/config",
+            default_value=get_package_share_directory("fira_hackathon_demo") + "/config",
         )
     )
 
