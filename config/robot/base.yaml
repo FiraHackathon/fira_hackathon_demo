@@ -1,22 +1,14 @@
 name: "base"
 configuration:
   type: alpo
-  model: fat
-# control: not yet implemented
-#   controller_manager:
-#     update_rate: 100
-#     configuration:
-#       pkg: alpo_bringup
-#       file: config/controller_manager.yaml
-#   controller:
-#     configuration:
-#       pkg: alpo_bringup
-#       file: config/mobile_base_controller.yaml
+  model: slim
 records:
   joint_states: true
   controller/odom: true
   controller/odometry: true
   controller/kinematic: true
 simulation:
-  initial_xyz: [0.0, 0.0, 0.0]
-  initial_rpy: [0.0, 0.0, 0.0]
+  # initial_xyz: [0.0, 0.0, 0.0]
+  # initial_rpy: [0.0, 0.0, 0.0]
+  initial_xyz: [93.962, 117.368, 0.78]
+  initial_rpy: [0.0, 0.0, 0.344]

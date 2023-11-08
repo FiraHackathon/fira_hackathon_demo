@@ -1,4 +1,4 @@
-directory: /home/jeanlaneurit/dev/records
+directory: /tmp/fira_hackathon_records
 config: true
 debug: true
 log: true
