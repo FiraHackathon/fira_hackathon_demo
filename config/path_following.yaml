@@ -8,7 +8,7 @@ sliding_observer: cinematic_linear_tangent
 # desired_lateral_deviation: distance to the curvilinear abscissa of the path to follow. unit: m
 # desired_course_deviation: angle between the robot and the path (only for robot with 2 axles
 #                           steering). unit: rad
-desired_linear_speed: 0.5
+desired_linear_speed: 1.5
 desired_lateral_deviation: 0.
 desired_course_deviation: 0.
 

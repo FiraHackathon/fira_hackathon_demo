@@ -10,5 +10,7 @@ records:
 simulation:
   # initial_xyz: [0.0, 0.0, 0.0]
   # initial_rpy: [0.0, 0.0, 0.0]
+  
+  # montoldre, begining of fira_hackathon_01.traj
   initial_xyz: [93.962, 117.368, 0.78]
   initial_rpy: [0.0, 0.0, 0.344]
