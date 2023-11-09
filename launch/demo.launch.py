@@ -99,10 +99,13 @@ def launch_setup(context, *args, **kwargs):
         ))
 
     actions.append(
-        Node(package="rviz2",
-             executable="rviz2",
-             name="rviz",
-             arguments=f"-d {self_directory}/rviz/demo.rviz"))
+        Node(
+            package="rviz2",
+            executable="rviz2",
+            name="rviz",
+            arguments=f"-d {self_directory}/rviz/demo.rviz",
+            output={'stdout': 'log'},
+        ))
 
     if record == "true":
         save_replay_configuration(
