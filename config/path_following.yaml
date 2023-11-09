@@ -18,12 +18,14 @@ desired_course_deviation: 0.
 maximal_steering_angle: 1.57
 minimal_linear_speed_command: 0.5
 
-# auto_configure: configure the lifecycle node when it is created
+# autoconfigure: configure the lifecycle node when it is created
+# autostart: start publish command when the node is configured
 # automatic_linear_speed_control: adapt the robot speed depending of the path
 # stop_at_the_end: publish a null speed when the robot reaches the end of the path
 # use_path_velocity: use the speed information stored in the path data
 # rear_steering_command_enabled: enable the control of the rear axle of a 2-axles steering robot
-auto_configure: true
+autoconfigure: true
+autostart: true
 automatic_linear_speed_control: true
 stop_at_the_end: true
 use_path_velocity: false

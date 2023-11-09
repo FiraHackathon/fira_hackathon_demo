@@ -15,6 +15,7 @@ configuration:
   type: drotek
   model: f9p
   rate: 10
+  dual_antenna: true
 geometry:
   parent_link: "base_link"
   xyz: [-0.1, 0.0, 1.68]
