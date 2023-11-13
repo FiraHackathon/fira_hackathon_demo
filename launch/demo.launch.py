@@ -65,28 +65,31 @@ def launch_setup(context, *args, **kwargs):
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 get_package_share_directory("tirrex_demo") + "/launch/demo.launch.py"),
-            launch_arguments={
-                "demo": demo,
-                "demo_timestamp": demo_timestamp,
-                "demo_config_directory": demo_config_directory,
-                "mode": mode,
-                "record": record,
-                "robot_namespace": robot_namespace,
-            }.items(),
+            launch_arguments=[
+                ("demo", demo),
+                ("demo_timestamp", demo_timestamp),
+                ("demo_config_directory", demo_config_directory),
+                ("mode", mode),
+                ("record", record),
+                ("robot_namespace", robot_namespace),
+            ],
         ))
 
     path_matching_launch = get_package_share_directory('romea_path_matching_bringup')
     path_matching_launch += '/launch/path_matching.launch.py'
-    full_path_file = f"{demo_config_directory}/paths/{path_file}"
     actions.append(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(path_matching_launch),
-            launch_arguments={'path': full_path_file}.items(),
+            launch_arguments=[
+                ('path_file', path_file),
+                ('path_directory', f"{demo_config_directory}/paths"),
+                ('robot_namespace', robot_namespace),
+                ('configuration_file', f"{demo_config_directory}/path_matching.yaml"),
+            ],
         ))
 
     path_following_launch = get_package_share_directory('romea_path_following_bringup')
     path_following_launch += '/launch/path_following.launch.py'
-    path_following_config_file = f"{demo_config_directory}/path_following.yaml"
     actions.append(
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(path_following_launch),
@@ -94,7 +97,7 @@ def launch_setup(context, *args, **kwargs):
                 ('robot_type', mobile_base.get_type()),
                 ('robot_model', mobile_base.get_model()),
                 ('robot_namespace', robot_namespace),
-                ('configuration_file', path_following_config_file),
+                ('configuration_file', f"{demo_config_directory}/path_following.yaml"),
             ],
         ))
 
