@@ -7,7 +7,7 @@ prediction_time_horizon: 1.0
 
 # path_frame_id: frame used to publish markers
 # autostart: if enabled, automatically start matching after initialisation
-# display: if enabled, publis rviz markers
+# display: if enabled, publish rviz markers
 path_frame_id: map
 autostart: true
 display: true

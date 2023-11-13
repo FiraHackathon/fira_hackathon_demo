@@ -14,7 +14,6 @@
 
 from tirrex_demo import (
     get_log_directory,
-    get_debug_directory,
     get_demo_timestamp,
     save_replay_configuration,
 )
@@ -26,7 +25,6 @@ from launch.actions import (
     OpaqueFunction,
     GroupAction,
     SetEnvironmentVariable,
-    LogInfo,
 )
 
 from launch_ros.actions import Node
@@ -49,66 +47,42 @@ def launch_setup(context, *args, **kwargs):
     demo_timestamp = get_demo_timestamp()
 
     self_directory = get_package_share_directory("fira_hackathon_demo")
-    debug_directory = get_debug_directory(demo, demo_timestamp, record)
     log_directory = get_log_directory(demo, demo_timestamp, record)
+    tirrex_launch_dir = get_package_share_directory("tirrex_demo") + '/launch'
 
     actions = [
-        LogInfo(msg=f"demo_config_directory: {demo_config_directory}"),
-        LogInfo(msg=f"debug_directory: {debug_directory}"),
-        LogInfo(msg=f"log_directory: {log_directory}"),
-    ]
-
-    # in rolling : use launch_ros/launch_ros/actions/set_ros_log_dir.py instead
-    actions.append(SetEnvironmentVariable("ROS_LOG_DIR", log_directory))
-
-    actions.append(
+        # in rolling : use launch_ros/launch_ros/actions/set_ros_log_dir.py instead
+        SetEnvironmentVariable("ROS_LOG_DIR", log_directory),
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                get_package_share_directory("tirrex_demo") + "/launch/demo.launch.py"),
-            launch_arguments=[
-                ("demo", demo),
-                ("demo_timestamp", demo_timestamp),
-                ("demo_config_directory", demo_config_directory),
-                ("mode", mode),
-                ("record", record),
-                ("robot_namespace", robot_namespace),
-            ],
-        ))
-
-    path_matching_launch = get_package_share_directory('romea_path_matching_bringup')
-    path_matching_launch += '/launch/path_matching.launch.py'
-    actions.append(
+            PythonLaunchDescriptionSource(tirrex_launch_dir + "/simulator.launch.py"),
+            launch_arguments={
+                "simulator_type": "gazebo",
+                "demo_config_directory": demo_config_directory,
+            }.items(),
+        ),
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(path_matching_launch),
-            launch_arguments=[
-                ('path_file', path_file),
-                ('path_directory', f"{demo_config_directory}/paths"),
-                ('robot_namespace', robot_namespace),
-                ('configuration_file', f"{demo_config_directory}/path_matching.yaml"),
-            ],
-        ))
-
-    path_following_launch = get_package_share_directory('romea_path_following_bringup')
-    path_following_launch += '/launch/path_following.launch.py'
-    actions.append(
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(path_following_launch),
-            launch_arguments=[
-                ('robot_type', mobile_base.get_type()),
-                ('robot_model', mobile_base.get_model()),
-                ('robot_namespace', robot_namespace),
-                ('configuration_file', f"{demo_config_directory}/path_following.yaml"),
-            ],
-        ))
-
-    actions.append(
+            PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
+            launch_arguments={
+                'mode': mode,
+                'robot_namespace': 'alpo',
+                'path': path_file,
+                'demo_config_directory': demo_config_directory,
+            }.items(),
+        ),
+        Node(
+            package="rqt_runtime_monitor",
+            executable="rqt_runtime_monitor",
+            name="monitor",
+            arguments=['--force-discover'],
+        ),
         Node(
             package="rviz2",
             executable="rviz2",
             name="rviz",
             arguments=['-d', f"{self_directory}/rviz/demo.rviz"],
             output={'stdout': 'log'},
-        ))
+        )
+    ]
 
     if record == "true":
         save_replay_configuration(
@@ -118,6 +92,19 @@ def launch_setup(context, *args, **kwargs):
             {"mode": "replay_" + mode},
         )
 
+        actions.append(
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    get_package_share_directory("tirrex_demo") + "/launch/record.launch.py"),
+                launch_arguments={
+                    "demo": demo,
+                    "demo_timestamp": demo_timestamp,
+                    "demo_config_directory": demo_config_directory,
+                    "mode": mode,
+                    "robot_namespace": robot_namespace,
+                }.items(),
+            ))
+
     return [GroupAction(actions)]
 
 
@@ -126,7 +113,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "mode",
             default_value="simulation",
-            choices=['simulation', 'live', 'replay_simulation', 'replay_live'],
+            choices=['simulation', 'replay_simulation'],
         ),
         DeclareLaunchArgument(
             "demo_config_directory",
