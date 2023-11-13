@@ -106,7 +106,7 @@ def launch_setup(context, *args, **kwargs):
             package="rviz2",
             executable="rviz2",
             name="rviz",
-            arguments=f"-d {self_directory}/rviz/demo.rviz",
+            arguments=['-d', f"{self_directory}/rviz/demo.rviz"],
             output={'stdout': 'log'},
         ))
 

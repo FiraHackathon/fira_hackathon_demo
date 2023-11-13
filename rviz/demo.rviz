@@ -84,8 +84,6 @@ Visualization Manager:
           Value: true
         alpo_rear_right_wheel_spinning_link:
           Value: true
-        base_footprint:
-          Value: true
         map:
           Value: true
       Marker Scale: 1
@@ -95,8 +93,30 @@ Visualization Manager:
       Show Names: false
       Tree:
         map:
-          base_footprint:
-            {}
+          alpo_base_footprint:
+            alpo_base_link:
+              alpo_front_left_wheel_steering_link:
+                alpo_front_left_wheel_spinning_link:
+                  {}
+              alpo_front_right_wheel_steering_link:
+                alpo_front_right_wheel_spinning_link:
+                  {}
+              alpo_gps_link:
+                {}
+              alpo_half_leg_left_link:
+                {}
+              alpo_half_leg_right_link:
+                {}
+              alpo_imu_link:
+                {}
+              alpo_initial_link:
+                {}
+              alpo_lidar_link:
+                {}
+              alpo_rear_left_wheel_spinning_link:
+                {}
+              alpo_rear_right_wheel_spinning_link:
+                {}
       Update Interval: 0
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -229,8 +249,8 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 22.641706466674805
-      Target Frame: <Fixed Frame>
+      Scale: 50.0536003112793
+      Target Frame: alpo_base_footprint
       Value: TopDownOrtho (rviz_default_plugins)
       X: 0
       Y: 0
