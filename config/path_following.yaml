@@ -27,7 +27,7 @@ minimal_linear_speed_command: 0.5
 autoconfigure: true
 autostart: true
 automatic_linear_speed_control: true
-stop_at_the_end: true
+stop_at_the_end: false
 use_path_velocity: false
 rear_steering_command_enabled: true
 
