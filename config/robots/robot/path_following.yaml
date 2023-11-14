@@ -34,7 +34,7 @@ rear_steering_command_enabled: true
 # cmd_mux configuration
 cmd_output:
   message_type: romea_mobile_base_msgs/OneAxleSteeringCommand
-  message_priority: 10
+  priority: 10
   rate: 10.
 
 # configuration of the different commands
