@@ -38,6 +38,7 @@ def launch_setup(context, *args, **kwargs):
     demo_config_directory = LaunchConfiguration("demo_config_directory").perform(context)
     record = LaunchConfiguration("record").perform(context)
 
+    robot_namespace = 'robot'
     demo = "fira_hackathon_demo"
     demo_timestamp = get_demo_timestamp()
     self_directory = get_package_share_directory("fira_hackathon_demo")
@@ -59,7 +60,7 @@ def launch_setup(context, *args, **kwargs):
             PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
             launch_arguments={
                 'mode': mode,
-                'robot_namespace': 'robot',
+                'robot_namespace': robot_namespace,
                 'demo_config_directory': demo_config_directory,
             }.items(),
         ),
