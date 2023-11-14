@@ -70,7 +70,7 @@ def launch_setup(context, *args, **kwargs):
                 ('path_file', path_file),
                 ('path_directory', f"{demo_config_directory}/paths"),
                 ('robot_namespace', robot_namespace),
-                ('configuration_file', f"{demo_config_directory}/path_matching.yaml"),
+                ('configuration_file', f"{robot_config_directory}/path_matching.yaml"),
             ],
         ),
         IncludeLaunchDescription(
@@ -79,7 +79,7 @@ def launch_setup(context, *args, **kwargs):
                 ('robot_type', mobile_base.get_type()),
                 ('robot_model', mobile_base.get_model()),
                 ('robot_namespace', robot_namespace),
-                ('configuration_file', f"{demo_config_directory}/path_following.yaml"),
+                ('configuration_file', f"{robot_config_directory}/path_following.yaml"),
             ],
         )
     ]
@@ -91,7 +91,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument("mode"),
         DeclareLaunchArgument("robot_namespace"),
-        DeclareLaunchArgument("path"),
+        DeclareLaunchArgument("path", default_value=''),
         DeclareLaunchArgument("demo_config_directory"),
         OpaqueFunction(function=launch_setup),
     ])
