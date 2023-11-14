@@ -8,7 +8,7 @@ Panels:
         - /Status1
         - /localisation1
         - /RobotModel1
-        - /RobotModel1/Links1
+        - /path1
         - /path1/Topic1
       Splitter Ratio: 0.5
     Tree Height: 726
@@ -56,35 +56,35 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        alpo_base_footprint:
-          Value: true
-        alpo_base_link:
-          Value: true
-        alpo_front_left_wheel_spinning_link:
-          Value: true
-        alpo_front_left_wheel_steering_link:
-          Value: true
-        alpo_front_right_wheel_spinning_link:
-          Value: true
-        alpo_front_right_wheel_steering_link:
-          Value: true
-        alpo_gps_link:
-          Value: true
-        alpo_half_leg_left_link:
-          Value: true
-        alpo_half_leg_right_link:
-          Value: true
-        alpo_imu_link:
-          Value: true
-        alpo_initial_link:
-          Value: true
-        alpo_lidar_link:
-          Value: true
-        alpo_rear_left_wheel_spinning_link:
-          Value: true
-        alpo_rear_right_wheel_spinning_link:
-          Value: true
         map:
+          Value: true
+        robot_base_footprint:
+          Value: true
+        robot_base_link:
+          Value: true
+        robot_front_left_wheel_spinning_link:
+          Value: true
+        robot_front_left_wheel_steering_link:
+          Value: true
+        robot_front_right_wheel_spinning_link:
+          Value: true
+        robot_front_right_wheel_steering_link:
+          Value: true
+        robot_gps_link:
+          Value: true
+        robot_half_leg_left_link:
+          Value: true
+        robot_half_leg_right_link:
+          Value: true
+        robot_imu_link:
+          Value: true
+        robot_initial_link:
+          Value: true
+        robot_lidar_link:
+          Value: true
+        robot_rear_left_wheel_spinning_link:
+          Value: true
+        robot_rear_right_wheel_spinning_link:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -93,29 +93,29 @@ Visualization Manager:
       Show Names: false
       Tree:
         map:
-          alpo_base_footprint:
-            alpo_base_link:
-              alpo_front_left_wheel_steering_link:
-                alpo_front_left_wheel_spinning_link:
+          robot_base_footprint:
+            robot_base_link:
+              robot_front_left_wheel_steering_link:
+                robot_front_left_wheel_spinning_link:
                   {}
-              alpo_front_right_wheel_steering_link:
-                alpo_front_right_wheel_spinning_link:
+              robot_front_right_wheel_steering_link:
+                robot_front_right_wheel_spinning_link:
                   {}
-              alpo_gps_link:
+              robot_gps_link:
                 {}
-              alpo_half_leg_left_link:
+              robot_half_leg_left_link:
                 {}
-              alpo_half_leg_right_link:
+              robot_half_leg_right_link:
                 {}
-              alpo_imu_link:
+              robot_imu_link:
                 {}
-              alpo_initial_link:
+              robot_initial_link:
                 {}
-              alpo_lidar_link:
+              robot_lidar_link:
                 {}
-              alpo_rear_left_wheel_spinning_link:
+              robot_rear_left_wheel_spinning_link:
                 {}
-              alpo_rear_right_wheel_spinning_link:
+              robot_rear_right_wheel_spinning_link:
                 {}
       Update Interval: 0
       Value: true
@@ -161,14 +161,14 @@ Visualization Manager:
     - Alpha: 0.4000000059604645
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
-      Description File: ""
-      Description Source: Topic
+      Description File: /tmp/robot_description.urdf
+      Description Source: File
       Description Topic:
         Depth: 1
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /alpo/robot_description
+        Value: /robot/robot_description
       Enabled: true
       Links:
         All Links Enabled: true
@@ -176,6 +176,74 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        robot_base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        robot_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_front_left_wheel_spinning_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_front_left_wheel_steering_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_front_right_wheel_spinning_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_front_right_wheel_steering_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_gps_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_half_leg_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_half_leg_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_initial_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        robot_lidar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_rear_left_wheel_spinning_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robot_rear_right_wheel_spinning_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       TF Prefix: ""
       Update Interval: 0
@@ -192,7 +260,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /alpo/path_matching/markers
+        Value: /robot/path_matching/markers
       Value: true
   Enabled: true
   Global Options:
@@ -250,7 +318,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.009999999776482582
       Scale: 50.0536003112793
-      Target Frame: alpo_base_footprint
+      Target Frame: robot_base_footprint
       Value: TopDownOrtho (rviz_default_plugins)
       X: 0
       Y: 0

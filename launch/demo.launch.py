@@ -32,26 +32,22 @@ from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 
-from romea_mobile_base_bringup import MobileBaseMetaDescription
-
 
 def launch_setup(context, *args, **kwargs):
     mode = LaunchConfiguration("mode").perform(context)
     demo_config_directory = LaunchConfiguration("demo_config_directory").perform(context)
     record = LaunchConfiguration("record").perform(context)
+
+    robot_namespace = 'robot'
     path_file = 'fira_hackathon_01.traj'
+    demo = "fira_hackathon_demo"
 
-    mobile_base = MobileBaseMetaDescription(f"{demo_config_directory}/robot/base.yaml")
-    robot_namespace = mobile_base.get_type()
-    demo = "tiara_demo"
     demo_timestamp = get_demo_timestamp()
-
     self_directory = get_package_share_directory("fira_hackathon_demo")
     log_directory = get_log_directory(demo, demo_timestamp, record)
     tirrex_launch_dir = get_package_share_directory("tirrex_demo") + '/launch'
 
     actions = [
-        # in rolling : use launch_ros/launch_ros/actions/set_ros_log_dir.py instead
         SetEnvironmentVariable("ROS_LOG_DIR", log_directory),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(tirrex_launch_dir + "/simulator.launch.py"),
@@ -60,21 +56,25 @@ def launch_setup(context, *args, **kwargs):
                 "demo_config_directory": demo_config_directory,
             }.items(),
         ),
+
+        # include the main robot controlled by the user
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
             launch_arguments={
                 'mode': mode,
-                'robot_namespace': 'alpo',
+                'robot_namespace': robot_namespace,
                 'path': path_file,
                 'demo_config_directory': demo_config_directory,
             }.items(),
         ),
+
         Node(
             package="rqt_runtime_monitor",
             executable="rqt_runtime_monitor",
             name="monitor",
-            arguments=['--force-discover'],
+            arguments=['--force-discover'],  # added to fix a bug in ros humble docker
         ),
+
         Node(
             package="rviz2",
             executable="rviz2",
@@ -85,13 +85,6 @@ def launch_setup(context, *args, **kwargs):
     ]
 
     if record == "true":
-        save_replay_configuration(
-            demo,
-            demo_timestamp,
-            "demo.launch.py",
-            {"mode": "replay_" + mode},
-        )
-
         actions.append(
             IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(
@@ -104,6 +97,13 @@ def launch_setup(context, *args, **kwargs):
                     "robot_namespace": robot_namespace,
                 }.items(),
             ))
+
+        save_replay_configuration(
+            demo,
+            demo_timestamp,
+            "demo.launch.py",
+            {"mode": "replay_" + mode},
+        )
 
     return [GroupAction(actions)]
 

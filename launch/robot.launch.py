@@ -34,7 +34,8 @@ def launch_setup(context, *args, **kwargs):
     demo_config_directory = LaunchConfiguration("demo_config_directory").perform(context)
     path_file = LaunchConfiguration("path").perform(context)
 
-    mobile_base = MobileBaseMetaDescription(f"{demo_config_directory}/robot/base.yaml")
+    robot_config_directory = f"{demo_config_directory}/robots/{robot_namespace}"
+    mobile_base = MobileBaseMetaDescription(robot_config_directory + '/base.yaml')
 
     tirrex_launch_dir = get_package_share_directory("tirrex_demo") + '/launch'
     tirrex_robot_dir = tirrex_launch_dir + '/robot'
@@ -47,19 +48,20 @@ def launch_setup(context, *args, **kwargs):
 
     actions = [
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(tirrex_robot_dir + "/robot.launch.py"),
+            PythonLaunchDescriptionSource(tirrex_robot_dir + '/robot.launch.py'),
             launch_arguments={
-                "mode": mode,
-                "robot_namespace": robot_namespace,
-                "robot_configuration_directory": demo_config_directory + "/robot",
+                'mode': mode,
+                'robot_namespace': robot_namespace,
+                'robot_configuration_directory': robot_config_directory,
             }.items(),
         ),
         IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(tirrex_robot_dir + "/robot_localisation.launch.py"),
+            PythonLaunchDescriptionSource(tirrex_robot_dir + '/robot_localisation.launch.py'),
             launch_arguments={
-                "mode": mode,
-                "robot_namespace": robot_namespace,
-                "demo_config_directory": demo_config_directory,
+                'mode': mode,
+                'robot_namespace': robot_namespace,
+                'demo_config_directory': demo_config_directory,
+                'robot_configuration_directory': robot_config_directory,
             }.items(),
         ),
         IncludeLaunchDescription(
