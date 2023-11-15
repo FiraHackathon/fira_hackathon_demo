@@ -1,6 +1,6 @@
 name: "base"
 configuration:
-  type: alpo
+  type: adap2e
   model: slim
 records:
   joint_states: true
