@@ -2,7 +2,7 @@
 # sliding_observer: select one type of sliding observer.
 #                   available: [cimenatic_linear_tangent, cinematic_lyapunov]
 command: classic
-sliding_observer: cinematic_linear_tangent
+sliding_observer: without
 
 # desired_linear_speed: target speed of the control law. unit: m/s
 # desired_lateral_deviation: distance to the curvilinear abscissa of the path to follow. unit: m
