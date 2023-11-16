@@ -79,6 +79,7 @@ def launch_setup(context, *args, **kwargs):
             executable="rqt_runtime_monitor",
             name="monitor",
             arguments=['--force-discover'],  # added to fix a bug in ros humble docker
+            output={'both': 'log'},  # disable stdout and stderr output on screen
         ),
 
         Node(
