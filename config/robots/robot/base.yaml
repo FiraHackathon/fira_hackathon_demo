@@ -1,7 +1,7 @@
 name: "base"
 configuration:
   type: adap2e
-  model: slim
+  model: fat
 records:
   joint_states: true
   controller/odom: true

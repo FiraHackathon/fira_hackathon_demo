@@ -1,7 +1,7 @@
 name: "base"
 configuration:
   type: adap2e
-  model: fat
+  model: slim
 # control:  not yet implemented
 #   controller_manager:
 #     update_rate: 100
