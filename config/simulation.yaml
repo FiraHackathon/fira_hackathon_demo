@@ -2,5 +2,5 @@
 # world_name: friction_cone.world
 
 world_package: gazebo
-# world_name: montoldre.world
-world_name: montoldre_vineyard_crops.world
+# world_name: farm.world
+world_name: farm_vineyard_crops.world
