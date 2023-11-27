@@ -50,7 +50,7 @@ commands:
       front_kp: 0.4
       rear_kp: 0.7
     prediction:
-      horizon: 10.
+      horizon: 10
       a0: 0.1642
       a1: 0.1072
       b1: 1.0086
