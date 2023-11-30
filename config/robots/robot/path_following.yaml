@@ -1,50 +1,27 @@
-# command: select one type of command. available: [classic, predictive]
-# sliding_observer: select one type of sliding observer.
-#                   available: [without, cimenatic_linear_tangent, cinematic_lyapunov]
-command: classic
-sliding_observer: without
+# adap2e charateristics
+base:
+  wheelbase: 1.38
+  inertia:
+    mass: 340.
+    center: [0.6, 0.0, 0.7]
+    z_moment: 259.
+  command_limits:  
+    minimal_longitudinal_speed: -2.0
+    maximal_longitudinal_speed: 2.0
+    maximal_front_steering_angle: 0.75
+    maximal_rear_steering_angle: 0.0
 
-# desired_linear_speed: target speed of the control law. unit: m/s
-# desired_lateral_deviation: distance to the curvilinear abscissa of the path to follow. unit: m
-# desired_course_deviation: angle between the robot and the path (only for robot with 2 axles
-#                           steering). unit: rad
-desired_linear_speed: 1.5
-desired_lateral_deviation: 0.
-desired_course_deviation: 0.
+# configuration of longitudinal control
+longitudinal_control:
+  minimal_linear_speed: 0.3
 
-# maximal_steering_angle: limit the maximal steering angle published by the control law.
-#                         it also takes into account the geometric limits of the robot. unit: rad
-# minimal_linear_speed_command: minimal speed published by the control law. unit m/s
-maximal_steering_angle: 1.57
-minimal_linear_speed_command: 0.5
-
-# autoconfigure: configure the lifecycle node when it is created
-# autostart: start publish command when the node is configured
-# automatic_linear_speed_control: adapt the robot speed depending of the path
-# stop_at_the_end: publish a null speed when the robot reaches the end of the path
-# use_path_velocity: use the speed information stored in the path data
-# rear_steering_command_enabled: enable the control of the rear axle of a 2-axles steering robot
-autoconfigure: true
-autostart: true
-automatic_linear_speed_control: true
-stop_at_the_end: false
-use_path_velocity: false
-rear_steering_command_enabled: true
-
-# cmd_mux configuration
-cmd_output:
-  # message_type: romea_mobile_base_msgs/OneAxleSteeringCommand
-  message_type: romea_mobile_base_msgs/TwoAxleSteeringCommand
-  priority: 10
-  rate: 10.
-
-# configuration of the different commands
-commands:
+# configuration for classic and predictive lateral control laws
+lateral_controls:
+  selected: classic 
   classic:
     gains:
-      front_kp: 0.4
+      front_kp: 0.9
       rear_kp: 0.5
-
   predictive:
     gains:
       front_kp: 0.4
@@ -56,22 +33,15 @@ commands:
       b1: 1.0086
       b2: -0.2801
 
-# configuration of the different sliding observers
-observers:
-  cinematic_linear_tangent:
-    gains:
-      lateral_deviation: -4.
-      course_deviation: -2.
-    filter_weights:
-      lateral_deviation: 0.9
-      course_deviation: 0.9
-      front_sliding_angle: 0.96
-      rear_sliding_angle: 0.9
+# control pointset
+setpoint:
+  desired_linear_speed: 1.0
+  desired_lateral_deviation: 0.0
 
-  cinematic_lyapunov:
-    gains:
-      x_deviation: -2.
-      y_deviation: -2.1
-      course_deviation: -2.
-      front_sliding_angle: -1.5
-      rear_sliding_angle: -0.8
+#configuration for cmd_mux auto connection
+cmd_output:
+  message_type: romea_mobile_base_msgs/TwoAxleSteeringCommand
+  priority: 10
+  rate: 10.
+
+

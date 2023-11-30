@@ -65,6 +65,7 @@ def launch_setup(context, *args, **kwargs):
             }.items(),
         ),
 
+        # include other robots
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
             launch_arguments={

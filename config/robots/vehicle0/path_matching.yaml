@@ -9,5 +9,6 @@ prediction_time_horizon: 1.0
 # autostart: if enabled, automatically start matching after initialisation
 # display: if enabled, publish rviz markers
 path_frame_id: map
+autoconfigure: true
 autostart: true
 display: true

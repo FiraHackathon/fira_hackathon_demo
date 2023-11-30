@@ -43,8 +43,12 @@ def launch_setup(context, *args, **kwargs):
     path_matching_launch = get_package_share_directory('romea_path_matching_bringup')
     path_matching_launch += '/launch/path_matching.launch.py'
 
-    path_following_launch = get_package_share_directory('romea_path_following_bringup')
-    path_following_launch += '/launch/path_following.launch.py'
+    if robot_namespace == "robot": 
+        path_following_launch = get_package_share_directory('fira_minimal_node')
+        path_following_launch += '/launch/path_following.launch.py'
+    else :
+        path_following_launch = get_package_share_directory('romea_path_following_bringup')
+        path_following_launch += '/launch/path_following.launch.py'
 
     actions = [
         IncludeLaunchDescription(
@@ -73,6 +77,7 @@ def launch_setup(context, *args, **kwargs):
                 ('configuration_file', f"{robot_config_directory}/path_matching.yaml"),
             ],
         ),
+        
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(path_following_launch),
             launch_arguments=[
@@ -81,7 +86,7 @@ def launch_setup(context, *args, **kwargs):
                 ('robot_namespace', robot_namespace),
                 ('configuration_file', f"{robot_config_directory}/path_following.yaml"),
             ],
-        )
+        ),
     ]
 
     return [GroupAction(actions)]
