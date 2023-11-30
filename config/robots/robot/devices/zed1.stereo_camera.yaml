@@ -1,0 +1,19 @@
+name: "stereo_camera"
+# driver:
+#   pkg: "sick_scan"
+#   ip: "192.168.1.112"
+#   port: 2112
+configuration:
+  type: zed
+  model: "1" 
+  resolution: 1280x720
+geometry:
+  parent_link: "base_link"
+  xyz: [1.32, 0.0, 1.34]
+  rpy: [0.0, 20.0, 0.0]
+records:
+  left/camera_info: false
+  left/image_raw: true
+  right/camera_info: false
+  right/image_raw: true
+

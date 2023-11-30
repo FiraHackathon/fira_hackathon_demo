@@ -1,0 +1,25 @@
+name: "rgbd_camera"
+# driver:
+#   pkg: "sick_scan"
+#   ip: "192.168.1.112"
+#   port: 2112
+configuration:
+  type: realsense
+  model: d435 
+  rgb_camera:
+    resolution: 1280x720
+  infrared_camera:
+    resolution: 1280x720
+  depth_camera:
+    resolution: 1280x720  
+geometry:
+  parent_link: "base_link"
+  xyz: [1.42, 0.0, 1.14]
+  rpy: [0.0, 20.0, 0.0]
+records:
+  rgb/camera_info: false
+  rgb/image_raw: true
+  depth/camera_info: false
+  depth/image_raw: true
+  point_cloud/points: true
+

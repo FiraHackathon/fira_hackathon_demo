@@ -13,3 +13,12 @@ ublox:
 xsens:
   type: imu
   available_mode: all
+axis:
+  type: camera
+  available_mode: simulation
+zed1:
+  type: stereo_camera
+  available_mode: none
+realsense:
+  type: rgbd_camera
+  available_mode: simulation
