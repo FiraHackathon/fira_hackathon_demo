@@ -33,8 +33,8 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 
 
-LOCAL_CONFIG_DIR = '/cfg_demo'
-DEMO_NAME = 'fira_hackathon_demo'
+LOCAL_CONFIG_DIR = '/cfg_chal3'
+DEMO_NAME = 'challenge3'
 
 
 def launch_setup(context, *args, **kwargs):
@@ -70,14 +70,14 @@ def launch_setup(context, *args, **kwargs):
         ),
 
         # include other robots
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
-            launch_arguments={
-                'mode': mode,
-                'robot_namespace': 'vehicle0',
-                'demo_config_directory': demo_config_directory,
-            }.items(),
-        ),
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
+        #     launch_arguments={
+        #         'mode': mode,
+        #         'robot_namespace': 'vehicle0',
+        #         'demo_config_directory': demo_config_directory,
+        #     }.items(),
+        # ),
 
         Node(
             package="rqt_runtime_monitor",

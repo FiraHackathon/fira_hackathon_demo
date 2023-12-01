@@ -1,0 +1,24 @@
+remote_controller:
+  type: joystick
+  available_mode: simulation
+embedded_controller:
+  type: joystick
+  available_mode: live
+lms151:
+  type: lidar
+  available_mode: all
+ublox:
+  type: gps
+  available_mode: all
+xsens:
+  type: imu
+  available_mode: all
+axis:
+  type: camera
+  available_mode: simulation
+zed1:
+  type: stereo_camera
+  available_mode: none
+realsense:
+  type: rgbd_camera
+  available_mode: simulation

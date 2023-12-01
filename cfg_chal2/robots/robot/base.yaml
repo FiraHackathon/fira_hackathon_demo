@@ -1,0 +1,16 @@
+name: "base"
+configuration:
+  type: adap2e
+  model: fat
+records:
+  joint_states: true
+  controller/odom: true
+  controller/odometry: true
+  controller/kinematic: true
+simulation:
+  # initial_xyz: [0.0, 0.0, 0.0]
+  # initial_rpy: [0.0, 0.0, 0.0]
+  
+  # farm, begining of fira_hackathon_01.traj
+  initial_xyz: [93.962, 117.368, 0.78]
+  initial_rpy: [0.0, 0.0, 0.344]

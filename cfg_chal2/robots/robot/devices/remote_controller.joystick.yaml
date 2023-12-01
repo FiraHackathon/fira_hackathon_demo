@@ -1,0 +1,10 @@
+name: "joystick"
+driver:
+  pkg: "joy"
+  device: "/dev/input/js0"
+  autorepeat_rate: 10.0
+  deadzone: 0.1
+configuration:
+  type: xbox
+records:
+  joy: true

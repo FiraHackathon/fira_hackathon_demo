@@ -9,7 +9,13 @@ endif()
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY config launch rviz
+  DIRECTORY
+    launch
+    rviz
+    cfg_chal1
+    cfg_chal2
+    cfg_chal3
+    cfg_demo
   DESTINATION share/${PROJECT_NAME}
 )
 

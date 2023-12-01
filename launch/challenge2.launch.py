@@ -33,8 +33,8 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 
 
-LOCAL_CONFIG_DIR = '/cfg_demo'
-DEMO_NAME = 'fira_hackathon_demo'
+LOCAL_CONFIG_DIR = '/cfg_chal2'
+DEMO_NAME = 'challenge2'
 
 
 def launch_setup(context, *args, **kwargs):
@@ -65,16 +65,6 @@ def launch_setup(context, *args, **kwargs):
             launch_arguments={
                 'mode': mode,
                 'robot_namespace': robot_namespace,
-                'demo_config_directory': demo_config_directory,
-            }.items(),
-        ),
-
-        # include other robots
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
-            launch_arguments={
-                'mode': mode,
-                'robot_namespace': 'vehicle0',
                 'demo_config_directory': demo_config_directory,
             }.items(),
         ),

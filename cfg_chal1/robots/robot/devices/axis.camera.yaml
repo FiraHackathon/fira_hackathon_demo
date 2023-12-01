@@ -1,0 +1,17 @@
+name: "camera"
+# driver:
+#   pkg: "sick_scan"
+#   ip: "192.168.1.112"
+#   port: 2112
+configuration:
+  type: axis
+  model: p1346 
+  resolution: 1280x720
+geometry:
+  parent_link: "base_link"
+  xyz: [1.02, 0.0, 1.34]
+  rpy: [0.0, 20.0, 0.0]
+records:
+  camera_info: false
+  image_raw: true
+

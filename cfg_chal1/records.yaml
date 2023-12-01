@@ -1,0 +1,5 @@
+directory: /tmp/fira_hackathon_records
+config: true
+debug: true
+log: true
+vcs: true

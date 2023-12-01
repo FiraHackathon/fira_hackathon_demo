@@ -1,0 +1,25 @@
+name: "gps"
+driver:
+  #  pkg: "nmea_navsat_driver"
+  pkg: "romea_ublox_driver"
+  device: "/dev/ttyACM0"
+  baudrate: 115200
+ntrip:
+  pkg: "ntrip_client"
+  host: caster.centipede.fr
+  port: 2101
+  username: centipede
+  password: centipede
+  mountpoint: MAGC
+configuration:
+  type: drotek
+  model: f9p
+  rate: 10
+  dual_antenna: true
+geometry:
+  parent_link: "base_link"
+  xyz: [-0.1, 0.0, 1.68]
+records:
+  nmea_sentence: true
+  gps_fix: false
+  vel: false
