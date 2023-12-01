@@ -20,7 +20,7 @@ lateral_controls:
   selected: classic 
   classic:
     gains:
-      front_kp: 0.9
+      front_kp: 1.5
       rear_kp: 0.5
   predictive:
     gains:
