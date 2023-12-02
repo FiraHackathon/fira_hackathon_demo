@@ -41,6 +41,11 @@ This node corresponds to the
 
 For the challenge 3, you have to develop your own version or modify the existing `fira_minimal_node`.
 
+There is also a `vehicle.launch.py` launch file used to spawn other robots that are used as dynamic
+obstacles.
+These vehicles does not use `fira_minimal_node` to control the robot but another path following node
+of the romea workspace.
+
 
 ## Composition of this project
 
