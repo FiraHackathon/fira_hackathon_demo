@@ -43,7 +43,7 @@ def launch_setup(context, *args, **kwargs):
     path_matching_launch = get_package_share_directory('romea_path_matching_bringup')
     path_matching_launch += '/launch/path_matching.launch.py'
 
-    path_following_launch = get_package_share_directory('fira_minimal_node')
+    path_following_launch = get_package_share_directory('romea_path_following_bringup')
     path_following_launch += '/launch/path_following.launch.py'
 
     actions = [

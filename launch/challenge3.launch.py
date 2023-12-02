@@ -71,7 +71,7 @@ def launch_setup(context, *args, **kwargs):
 
         # include other robots
         # IncludeLaunchDescription(
-        #     PythonLaunchDescriptionSource(self_directory + '/launch/robot.launch.py'),
+        #     PythonLaunchDescriptionSource(self_directory + '/launch/vehicle.launch.py'),
         #     launch_arguments={
         #         'mode': mode,
         #         'robot_namespace': 'vehicle0',
