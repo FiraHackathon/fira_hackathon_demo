@@ -54,7 +54,7 @@ This package contains the following directories:
 * `cfg_chal1` contains the configuration files used by the _challenge 1_ launch file
 * `cfg_chal2` contains the configuration files used by the _challenge 2_ launch file
 * `cfg_chal1` contains the configuration files used by the _challenge 3_ launch file
-* `demo` contains the configuration files used by the _demo_ launch file
+* `cfg_demo` contains the configuration files used by the _demo_ launch file
 * `launch` contains the launch file (described below)
 * `rviz` contains the rviz2 configuration
 
