@@ -4,10 +4,10 @@ driver:
   ip: "unknown"
   port: "0"
 configuration:
-  type: test
-  model: lx43c
-  rate: 10
-  resolution: 0.5
+  type: sick
+  model: mrs1xxx
+  rate: 50
+  resolution: 0.25
 geometry:
   parent_link: "base_link"
   xyz: [2.50, 0.0, 0.38]

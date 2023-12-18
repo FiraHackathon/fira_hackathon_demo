@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(fira_hackathon_demo)
+project(cyrille_contrib)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)

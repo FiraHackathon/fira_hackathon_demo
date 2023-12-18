@@ -6,7 +6,10 @@ embedded_controller:
   available_mode: live
 lms151:
   type: lidar
-  available_mode: all
+  available_mode: none
+mrs1xxx:
+  type: lidar
+  available_mode: simulation
 ublox:
   type: gps
   available_mode: all

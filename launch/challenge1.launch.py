@@ -34,7 +34,7 @@ from ament_index_python.packages import get_package_share_directory
 
 
 LOCAL_CONFIG_DIR = '/cfg_chal1'
-DEMO_NAME = 'challenge1'
+DEMO_NAME = 'cyrille_challenge1'
 
 
 def launch_setup(context, *args, **kwargs):
@@ -44,7 +44,7 @@ def launch_setup(context, *args, **kwargs):
     robot_namespace = 'robot'
     demo = DEMO_NAME
     demo_timestamp = get_demo_timestamp()
-    self_directory = get_package_share_directory("fira_hackathon_demo")
+    self_directory = get_package_share_directory("cyrille_contrib")
     log_directory = get_log_directory(demo, demo_timestamp, record)
     demo_config_directory = self_directory + LOCAL_CONFIG_DIR
     tirrex_launch_dir = get_package_share_directory("tirrex_demo") + '/launch'
