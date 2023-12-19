@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>cyrille_contrib</name>
+  <name>fira_hackathon_demo</name>
   <version>0.0.0</version>
   <description>Package containing hackathon fira demo.</description>
 

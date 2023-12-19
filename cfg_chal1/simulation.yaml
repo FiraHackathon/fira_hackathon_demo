@@ -1,3 +1,2 @@
 world_package: gazebo
-# world_name: farm_vineyard_crops.world
-world_name: farm_vineyard_crops_challenge1.world
+world_name: farm_vineyard_crops.world
