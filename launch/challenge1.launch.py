@@ -25,6 +25,7 @@ from launch.actions import (
     OpaqueFunction,
     GroupAction,
     SetEnvironmentVariable,
+    TimerAction,
 )
 
 from launch_ros.actions import Node
@@ -48,6 +49,8 @@ def launch_setup(context, *args, **kwargs):
     log_directory = get_log_directory(demo, demo_timestamp, record)
     demo_config_directory = self_directory + LOCAL_CONFIG_DIR
     tirrex_launch_dir = get_package_share_directory("tirrex_demo") + '/launch'
+    obstacle_map_file = get_package_share_directory("fira_hackathon_gazebo")
+    obstacle_map_file += '/data/challenge1_map.yaml'
 
     actions = [
         SetEnvironmentVariable("ROS_LOG_DIR", log_directory),
@@ -82,7 +85,28 @@ def launch_setup(context, *args, **kwargs):
             name="rviz",
             arguments=['-d', f"{self_directory}/rviz/demo.rviz"],
             output={'stdout': 'log'},
-        )
+        ),
+
+        Node(
+            package="nav2_map_server",
+            executable="map_server",
+            name="map_server",
+            parameters=[{
+                'yaml_filename': obstacle_map_file,
+            }],
+        ),
+        TimerAction(
+            period=3.0,  # short delay to let rviz start before the map is loaded
+            actions=[Node(
+                package="nav2_lifecycle_manager",
+                executable="lifecycle_manager",
+                name="lifecycle_manager",
+                parameters=[{
+                    'autostart': True,
+                    'node_names': ['map_server'],
+                }],
+            )],
+        ),
     ]
 
     if record == "true":

@@ -7,9 +7,8 @@ Panels:
         - /Global Options1
         - /Status1
         - /robot1
-        - /vehicle01
       Splitter Ratio: 0.5
-    Tree Height: 732
+    Tree Height: 365
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -376,6 +375,27 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: vehicle0
+    - Alpha: 0.699999988079071
+      Class: rviz_default_plugins/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map_updates
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 255; 255; 255
@@ -431,11 +451,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 17.575746536254883
+      Scale: 9.311705589294434
       Target Frame: map
       Value: TopDownOrtho (rviz_default_plugins)
-      X: 118.41946411132812
-      Y: 118.871826171875
+      X: 110.26750946044922
+      Y: 123.94349670410156
     Saved:
       - Angle: 0
         Class: rviz_default_plugins/TopDownOrtho
