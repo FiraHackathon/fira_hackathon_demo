@@ -14,3 +14,7 @@ simulation:
   # before the start point of challenge1_waypoints_01
   initial_xyz: [92.876, 124.448, 0.85]
   initial_rpy: [0.010, 0.008, 0.334]
+  
+  # start point of challenge1 evaluation
+  # initial_xyz: [160.694, 105.144, -0.2]
+  # initial_rpy: [0, 0, 0]
