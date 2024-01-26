@@ -29,6 +29,7 @@ from launch.actions import (
 )
 
 from launch_ros.actions import Node
+from launch.conditions import LaunchConfigurationNotEquals
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
@@ -41,6 +42,9 @@ DEMO_NAME = 'challenge1'
 def launch_setup(context, *args, **kwargs):
     mode = LaunchConfiguration("mode").perform(context)
     record = LaunchConfiguration("record").perform(context)
+    
+    if mode == "simulation":
+    	mode += "_gazebo_classic"
 
     robot_namespace = 'robot'
     demo = DEMO_NAME
@@ -60,6 +64,7 @@ def launch_setup(context, *args, **kwargs):
                 "simulator_type": "gazebo",
                 "demo_config_directory": demo_config_directory,
             }.items(),
+            condition=LaunchConfigurationNotEquals("mode", "simulation_4dv"),
         ),
 
         # include the main robot controlled by the user
@@ -138,7 +143,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "mode",
             default_value="simulation",
-            choices=['simulation', 'replay_simulation'],
+            choices=['simulation', 'simulation_4dv', 'replay_simulation'],
         ),
         DeclareLaunchArgument("record", default_value="false"),
     ]

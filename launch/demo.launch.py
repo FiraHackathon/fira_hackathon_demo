@@ -39,6 +39,10 @@ DEMO_NAME = 'fira_hackathon_demo'
 
 def launch_setup(context, *args, **kwargs):
     mode = LaunchConfiguration("mode").perform(context)
+    
+    if mode == "simulation":
+        mode += "_gazebo_classic"
+    	
     record = LaunchConfiguration("record").perform(context)
 
     robot_namespace = 'robot'
