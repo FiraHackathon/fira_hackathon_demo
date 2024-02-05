@@ -87,7 +87,7 @@ def launch_setup(context, *args, **kwargs):
             name="rviz",
             arguments=['-d', f"{self_directory}/rviz/demo.rviz"],
             output={'stdout': 'log'},
-        )
+        ),
     ]
 
     if record == "true":

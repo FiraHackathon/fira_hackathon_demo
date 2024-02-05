@@ -12,8 +12,8 @@ simulation:
   # initial_rpy: [0.0, 0.0, 0.0]
   
   # farm, begining of fira_hackathon_01.traj
-  initial_xyz: [93.962, 117.368, 0.78]
-  initial_rpy: [0.0, 0.0, 0.344]
+  initial_xyz: [130.349736, 138.448315, 0.62]
+  initial_rpy: [0.015481, 0.004671, 0.372115]
 
   # start point of challenge3 evaluation
   # initial_xyz: [134.532, 88.5422, 0]
